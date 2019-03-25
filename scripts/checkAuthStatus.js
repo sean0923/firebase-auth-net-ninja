@@ -8,10 +8,7 @@ auth.onAuthStateChanged((user) => {
 		console.log('user logged in');
 
 		renderNavbar(user);
-
-		db.collection('guides').get().then((snapshot) => {
-			renderGuides(snapshot.docs);
-		});
+		getData();
 	} else {
 		console.log('user logged out');
 
