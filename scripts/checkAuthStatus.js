@@ -8,12 +8,13 @@ auth.onAuthStateChanged((user) => {
 		console.log('user logged in');
 
 		renderNavbar(user);
+		toggleAccountDetailInfo(user);
 		getData();
 	} else {
 		console.log('user logged out');
 
 		renderNavbar();
-
+		toggleAccountDetailInfo();
 		// not logged in so render empty list
 		renderGuides([]);
 	}
