@@ -24,6 +24,6 @@ const renderGuides = (docs) => {
 // const firebase = require('firebase');
 // const db = firebase.firestore();
 
-db.collection('guides').get().then((snapshot) => {
-	renderGuides(snapshot.docs);
-});
+// db.collection('guides').get().then((snapshot) => {
+// 	renderGuides(snapshot.docs);
+// });
