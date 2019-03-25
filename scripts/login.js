@@ -13,8 +13,6 @@ loginForm.addEventListener('submit', (e) => {
 	auth
 		.signInWithEmailAndPassword(email, password)
 		.then((cred) => {
-			console.log('cred: ', cred.user);
-
 			const modal = document.querySelector('#modal-login');
 			M.Modal.getInstance(modal).close();
 			loginForm.reset();

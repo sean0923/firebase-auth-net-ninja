@@ -6,12 +6,7 @@ const logout = document.querySelector('#logout');
 logout.addEventListener('click', (e) => {
 	e.preventDefault();
 
-	auth
-		.signOut()
-		.then(() => {
-			console.log('user has signed out');
-		})
-		.catch((error) => {
-			console.log('error: ', error);
-		});
+	auth.signOut().then(() => {}).catch((error) => {
+		console.log('error: ', error);
+	});
 });
