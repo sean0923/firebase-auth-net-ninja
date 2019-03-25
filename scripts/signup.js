@@ -8,13 +8,21 @@ signupForm.addEventListener('submit', (e) => {
 
 	const email = signupForm['signup-email'].value;
 	const password = signupForm['signup-password'].value;
-	// auth.createUserWithEmailAndPassword()
+	const bio = signupForm['signup-bio'].value;
 
-	auth.createUserWithEmailAndPassword(email, password).then((cred) => {
-		console.log('cred: ', cred.user);
+	auth
+		.createUserWithEmailAndPassword(email, password)
+		.then((cred) => {
+			console.log('cred: ', cred.user);
 
-		const modal = document.querySelector('#modal-signup');
-		M.Modal.getInstance(modal).close();
-		signupForm.reset();
-	});
+			return db.collection('users').doc(cred.user.uid).set({ bio });
+		})
+		.then(() => {
+			const modal = document.querySelector('#modal-signup');
+			M.Modal.getInstance(modal).close();
+			signupForm.reset();
+		})
+		.catch((error) => {
+			console.log('error: ', error);
+		});
 });
