@@ -24,13 +24,12 @@ const renderGuides = (docs) => {
 };
 
 const getData = () => {
-	console.log('getData');
 	db.collection('guides').onSnapshot(
 		(snapshot) => {
 			renderGuides(snapshot.docs);
 		},
 		(error) => {
-			console.log('error: ', error);
+			console.log('error: ', error.message);
 		}
 	);
 };
