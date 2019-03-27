@@ -14,12 +14,14 @@ auth.onAuthStateChanged((user) => {
 		});
 
 		toggleAccountDetailInfo(user);
+		toggleAdminItems(user);
 		getData();
 	} else {
 		console.log('user logged out');
 
 		renderNavbar();
 		toggleAccountDetailInfo();
+		toggleAdminItems(user);
 		// not logged in so render empty list
 		renderGuides([]);
 	}
