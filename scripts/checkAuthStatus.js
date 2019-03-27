@@ -10,11 +10,14 @@ auth.onAuthStateChanged((user) => {
 		// add "admin" key to user
 		user.getIdTokenResult().then((idTokenResult) => {
 			user.admin = idTokenResult.claims.admin;
+			
+			toggleAdminItems(user);
 			renderNavbar(user);
 		});
 
 		toggleAccountDetailInfo(user);
-		toggleAdminItems(user);
+
+		
 		getData();
 	} else {
 		console.log('user logged out');
