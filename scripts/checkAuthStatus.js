@@ -7,7 +7,12 @@ auth.onAuthStateChanged((user) => {
 	if (user) {
 		console.log('user logged in');
 
-		renderNavbar(user);
+		// add "admin" key to user
+		user.getIdTokenResult().then((idTokenResult) => {
+			user.admin = idTokenResult.claims.admin;
+			renderNavbar(user);
+		});
+
 		toggleAccountDetailInfo(user);
 		getData();
 	} else {
